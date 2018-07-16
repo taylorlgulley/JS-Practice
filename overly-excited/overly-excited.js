@@ -8,14 +8,21 @@ let sentence = ["The","walrus","danced","through","the","trees","in","the","ligh
 //     the array as the sole argument. It should iterate over the array
 //     and output the words to the browser console.
 // */
-function addExcitement (theWordArray) {
+
+
+function addExcitement (theWordArray, x) {             // added another argument to the function
 
     // Each time the for loop executes, you're going to add one more word to this string
     let buildMeUp = ""
 
     for (let i = 1; i <= theWordArray.length; i++) {
         if ( i % 3 === 0 && i !== 0) {
-        buildMeUp += " " + sentence[i-1] + "!";
+            buildMeUp += " " + sentence[i-1];
+            for (let j = 1; j <= i; j++) {        // add another counter and for loop to add on ! for each time j is 
+                if ( j % 3 === 0 ) {
+                    buildMeUp += x               // change ! to x so when you call the function you can change what punctuation you want
+                }
+            }
         } else {
             buildMeUp += " " + sentence[i-1];
         }
@@ -26,10 +33,7 @@ function addExcitement (theWordArray) {
 }
     
 // Invoke the function and pass in the array
-addExcitement(sentence);
-
-
-
+addExcitement(sentence, "?");
 
 
 
