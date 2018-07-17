@@ -3,6 +3,8 @@ console.log("hi")
 // Create an array that contains the words in the sentence
 let sentence = ["The","walrus","danced","through","the","trees","in","the","light","of","the","moon"];
 
+let nextSentence = ["The","coder","learns","the","code","grows","they","become","master"];
+
 // /*
 //     The addExcitement function should be an impure function, and accept
 //     the array as the sole argument. It should iterate over the array
@@ -35,6 +37,7 @@ function addExcitement (theWordArray, x) {             // added another argument
 // Invoke the function and pass in the array
 addExcitement(sentence, "?");
 
+// addExcitement(nextSentence, "!");          // another array to use but you must change the sentence vaiable in the for loop to nextSentence
 
 
 
