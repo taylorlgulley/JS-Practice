@@ -31,7 +31,6 @@ let planetCapital = planets.map((planet) => {
 })
 console.log(planetCapital);
 
-
 /*
     Use the filter method to create a new array that
     contains planets with the letter 'e'. Use the `includes()`
@@ -39,7 +38,16 @@ console.log(planetCapital);
 
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
 */
-
+let letterE = planets.filter((planet) => {
+    planetE = planet.includes("e");
+    return planetE;
+})
+console.log(letterE);
 
 // Use the reduce method to create a sentence from the words in the following array
 const words = ["The", "early", "bird", "might", "get", "the", "worm", "but", "the", "second", "mouse", "gets", "the", "cheese"]
+
+let reduced = words.reduce(
+    (currentTotal, next) => currentTotal + " " + next
+);
+console.log(reduced);
