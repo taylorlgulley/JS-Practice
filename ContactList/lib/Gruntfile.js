@@ -14,17 +14,20 @@ module.exports = function (grunt) {
           }
        },
        watch: {
-          scripts: {
-             files: ["../scripts/**/*.js"],
-             tasks: ["browserify"]
+          javascripts: {
+             files: ["scripts/**/*.js", "!node_modules/**?*.js"],
+             tasks: ["eslint","browserify"]
           },
           browserify: {
              files: ["../scripts/*.js"],
              tasks: ["browserify"]
           }
-       }
+       },
+       eslint: {
+        src: ["../scripts/*.js", "!node_modules/**?*.js"]
+      },
     });
 
     require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
-    grunt.registerTask("default", ["browserify", "watch"]);
+    grunt.registerTask("default", ["eslint", "browserify", "watch"]);
  };
