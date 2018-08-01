@@ -1,30 +1,40 @@
 "use strict";
 
-let contacts = [
-    {
-        name: "Taylor Gulley",
-        phone: "1111111111",
-        address: "Yeah no"
+let database = Object.create(null, {
+    init: {
+        value: function(){
+            this.getDatabase();
+        }
     },
-    {
-        name: "Cheryl Gulley",
-        phone: "2222222222",
-        address: "yeah no"
+    contacts: {
+        value: [],
+        writable:true
     },
-    {
-        name: "Dennis Gulley",
-        phone: "3333333333",
-        address: "yeah no"
+    addContact: {
+        value: function(newContact){
+            let database = this.getContacts();
+            database.push(newContact);
+            this.setContacts(database);
+        }
+    },
+    getContacts: {
+        value: function(){
+            return this.contacts;
+        }
+    },
+    getDatabase: {
+        value: function(){
+            return JSON.parse(localStorage.getItem("contacts")) || [];
+        }
+    },
+    setContacts: {
+        value: function(contacts){
+            localStorage.setItem("contacts", JSON.stringify(contacts));
+            this.contacts = this.getDatabase();
+        }
     }
-];
+});
 
-localStorage.setItem("contacts", JSON.stringify(contacts));
 
-console.log(JSON.stringify(contacts));
-
-function getContacts(){
-    return JSON.parse(localStorage.getItem("contacts"));
-}
-
-module.exports = getContacts;
+module.exports = database;
 
