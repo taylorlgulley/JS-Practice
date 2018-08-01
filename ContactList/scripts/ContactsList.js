@@ -1,20 +1,23 @@
 "use strict";
 let createContact = require("./Contact");
-let contactCollection = require("./ContactCollection");
+let database = require("./ContactCollection");
 
 //1. get contacts from LS
 //2. iterate over them
 //3. render them to the DOM
 
+let outputEl = document.querySelector("#contactList");
+
 function listContacts(){
-    contactCollection().forEach(contact => {
+    outputEl.innerHTML = "";
+    database.getContacts().forEach(contact => {
         let contactComponent = createContact(contact.name, contact.phone, contact.address);
-        writeContactsToDom(contactComponent);
+        writeContactsToDOM(contactComponent);
     });
 }
 
-function writeContactsToDom(contact){
-    document.querySelector("#contactList").innerHTML += contact;
+function writeContactsToDOM(contact){
+    outputEl.innerHTML += contact;
 }
 
 module.exports = listContacts;
